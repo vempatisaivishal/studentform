@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Marks Table</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007acc;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    
+        <form id="studentForm" class="col-sm-offset-1 col-sm-3">
+
+            <h1 style=" font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Enter
+                Student Data</h1>
+
+            <label class="form-label" for="studentName">Student Name</label>
+            <input type="text" id="studentName" class="form-control" />
+
+            <label class="form-label" for="rollNumber">Roll Number</label>
+            <input type="text" id="rollNumber" class="form-control" />
+
+            <label class="form-label" for="subject1Marks">Subject 1 Marks</label>
+            <input type="text" id="subject1Marks" class="form-control" />
+
+            <label class="form-label" for="subject2Marks">Subject 2 Marks</label>
+            <input type="text" id="subject2Marks" class="form-control" />
+
+            <label class="form-label" for="subject3Marks">Subject 3 Marks</label>
+            <input type="text" id="subject3Marks" class="form-control" />
+
+            <!-- Submit button -->
+
+            <button type="button" class="btn btn-primary btn-block mb-4" onclick="addStudent()">Add Student</button>
+
+        </form>
+    
+            <h1 style="text-align: center; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Student Data</h2>
+            <table id="studentTable" class="col-sm-offset-1 col-sm-6">
+                <tr>
+                    <th>Student Name</th>
+                    <th>Roll Number</th>
+                    <th>Subject 1 Marks</th>
+                    <th>Subject 2 Marks</th>
+                    <th>Subject 3 Marks</th>
+                    <th>Total Marks</th>
+                </tr>
+            </table>
+
+        <script>
+            function addStudent() {
+                const studentName = document.getElementById("studentName").value;
+                const rollNumber = document.getElementById("rollNumber").value;
+                const subject1Marks = parseInt(document.getElementById("subject1Marks").value);
+                const subject2Marks = parseInt(document.getElementById("subject2Marks").value);
+                const subject3Marks = parseInt(document.getElementById("subject3Marks").value);
+                const totalMarks = subject1Marks + subject2Marks + subject3Marks;
+
+                const studentTable = document.getElementById("studentTable");
+                const newRow = studentTable.insertRow(-1);
+                const cell1 = newRow.insertCell(0);
+                const cell2 = newRow.insertCell(1);
+                const cell3 = newRow.insertCell(2);
+                const cell4 = newRow.insertCell(3);
+                const cell5 = newRow.insertCell(4);
+                const cell6 = newRow.insertCell(5);
+
+                cell1.innerHTML = studentName;
+                cell2.innerHTML = rollNumber;
+                cell3.innerHTML = subject1Marks;
+                cell4.innerHTML = subject2Marks;
+                cell5.innerHTML = subject3Marks;
+                cell6.innerHTML = totalMarks;
+
+                document.getElementById("studentForm").reset();
+            }
+        </script>
+
+</body>
+
+</html>
